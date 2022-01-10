@@ -35,5 +35,5 @@ for elecID=1:length(elec)
     xlabel('Time [s]');
     ylabel('Micro Volts');
     title(elecIS);
-    legend({'Raw EEG','Beta band filtered'},'FontSize',10);
+    legend({'Raw EEG','Delta band filtered'},'FontSize',10);
 end
