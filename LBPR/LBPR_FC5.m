@@ -34,12 +34,12 @@ theta_H = pw(theta_H_index); % 8 Hz
 beta_L = pw(beta_L_index);   % 14 Hz
 beta_H = pw(beta_H_index);   % 30 Hz
 
+% Total band power
+TBP_theta = theta_L + theta_H;
+TBP_beta = beta_L + beta_H;
+
 % FC5 LBPR
-LBPR_TB_L = log(theta_L)/log(beta_L);
-LBPR_TB_H = log(theta_H)/log(beta_H);
+LBPR = log(TBP_theta)/log(TBP_beta);
 
 disp(' ');
-disp(['LBPR Theta Beta low ratio ' num2str(LBPR_TB_L)]);
-disp(['LBPR Theta Beta high ratio ' num2str(LBPR_TB_H)]);
-
-
+disp(['LBPR Theta Beta ratio ' num2str(LBPR)]);
