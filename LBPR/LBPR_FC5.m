@@ -29,14 +29,8 @@ beta_H_index = 9354;
 disp(['Theta band [' num2str(round(freq(theta_L_index))) ' - ' num2str(round(freq(theta_H_index))) ']']);
 disp(['Beta band [' num2str(round(freq(beta_L_index))) ' - ' num2str(round(freq(beta_H_index))) ']']);
 
-theta_L = pw(theta_L_index); % 4 Hz
-theta_H = pw(theta_H_index); % 8 Hz
-beta_L = pw(beta_L_index);   % 14 Hz
-beta_H = pw(beta_H_index);   % 30 Hz
-
-% Total band power
-TBP_theta = theta_L + theta_H;
-TBP_beta = beta_L + beta_H;
+TBP_theta = sum(pw(theta_L_index:theta_H_index)); % 4 - 8Hz
+TBP_beta = sum(pw(beta_L_index:beta_H_index));   % 14 - 30Hz
 
 % FC5 LBPR
 LBPR = log(TBP_theta)/log(TBP_beta);
