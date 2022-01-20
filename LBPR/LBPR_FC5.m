@@ -12,13 +12,14 @@ x = filtfilt(b1,a1,eeg.raw);
 eeg.HPfilt = filtfilt(b1,a1,x);
 
 FC5data = eeg.HPfilt(:,4); % FC5
+x = FC5data;
 
 % Do FFT to computer power. We need the power value to know the TBP.
-x = FC5data;
+n = length(x);
 xdft = fft(x);
-xdft = xdft(1:length(x)/2+1);
-pw = abs(xdft).^2;
-freq = 0:fs/length(x):fs/2;
+xdft = xdft(1:n/2+1);
+pw = abs(xdft).^2/n; % Power of the DFT
+freq = 0:fs/n:fs/2;
 
 % FC5 TBP
 theta_L_index = 1249;
